@@ -7,26 +7,76 @@
 
 <body>
     <script>
-        // Your JavaScript goes here!
-
-        //const playerSelection = 'rock'
-        const computerSelection = computerPlay()
-        let results;
-
-
-        var playerSelection = prompt("välj");
-        playerSelection = playerSelection.toLocaleLowerCase();
+      
+       
+        let result;
+        let winCounter = 0; 
+        let looseCounter = 0;
+        let drawCounter = 0; 
 
 
 
-        console.log(playRound(playerSelection, computerSelection))
-        
+        console.log(game()); 
+      console.log(getMatchWinner());
+       
+ 
 
 
-        function game(){
 
+
+
+        function game() {
             
+            do {
+                getSeletions();
+                playRound(playerSelection, computerPlay())
+                if (playRound(playerSelection, computerPlay()) == "win"){
+                   winCounter++;  
+                   console.log("Your Score " + winCounter);
+                   console.log("Computer Score " + looseCounter);
+                   console.log(" ");
+                 
+
+                }else if (playRound(playerSelection, computerPlay()) == "loose"){
+                   looseCounter++;  
+                   console.log("Your Score " + winCounter);
+                   console.log("Computer Score " + looseCounter);
+                   console.log(" ");
+
+                } else {
+                    drawCounter++;  
+                   console.log("Draws: " + drawCounter);
+                    console.log(" ");
+                }
+                                    
+            } 
+            while (!(winCounter === 5 || looseCounter === 5));                                  
+           
         }
+
+
+        function getMatchWinner(){
+            if (winCounter > looseCounter){
+                console.log("Congratulations! You win with a score of " + winCounter);
+            }
+            if (winCounter < looseCounter){
+                console.log("Too bad! You loose");
+            }
+
+
+        }
+
+
+        function getSeletions() {
+           
+            playerSelection = prompt("välj");
+           playerSelection = playerSelection.toLowerCase();
+            return (playerSelection, computerPlay());
+
+
+        }
+
+
 
 
 
@@ -44,14 +94,14 @@
 
 
         function playRound(playerSelection, computerSelection) {
-            if (playerSelection === "rock"){
-                playerRock(playerSelection, computerSelection);  
+            if (playerSelection === "rock") {
+                playerRock(playerSelection, computerSelection);
             }
-            if (playerSelection === "paper"){
-                 playerPaper(playerSelection, computerSelection);  
+            if (playerSelection === "paper") {
+                playerPaper(playerSelection, computerSelection);
             }
-            if (playerSelection === "scissors"){
-               playerScissors(playerSelection, computerSelection);    
+            if (playerSelection === "scissors") {
+                playerScissors(playerSelection, computerSelection);
             }
 
             return result;
@@ -63,12 +113,14 @@
         function playerRock(playerSelection, computerSelection) {
             if (playerSelection === "rock" && computerSelection === "scissors") {
                 result = "win";
+                
             }
             if (playerSelection === "rock" && computerSelection === "paper") {
                 result = "loose";
             }
             if (playerSelection === "rock" && computerSelection === "rock") {
                 result = "draw";
+               
             }
             return result;
 
