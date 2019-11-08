@@ -3,166 +3,37 @@
 
 <head>
     <title>Page Title</title>
+    <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
-    <script>
-      
-       
-        let result;
-        let winCounter = 0; 
-        let looseCounter = 0;
-        let drawCounter = 0; 
+    <div class="container">
+    <div id="banner">Rock Paper Scissors</div>
 
 
-
-        console.log(game()); 
-      console.log(getMatchWinner());
-       
- 
-
-
+    
+            <button id="btnRock">Rock</button>
+            <button id="btnPaper">Paper</button>
+            <button id="btnScissors">Scissors</button>
+  
 
 
+    <div id="score">
+        <h3 id="scoreboard">Scoreboard</h3>
+    </div>
 
-        function game() {
-            
-            do {
-                getSeletions();
-                playRound(playerSelection, computerPlay())
-                if (playRound(playerSelection, computerPlay()) == "win"){
-                   winCounter++;  
-                   console.log("Your Score " + winCounter);
-                   console.log("Computer Score " + looseCounter);
-                   console.log(" ");
-                 
+    <div id="yourScore">Your Score</div>
+    <div id="computerScore">Computer Score</div>
+    <div id="wins">0</div>
 
-                }else if (playRound(playerSelection, computerPlay()) == "loose"){
-                   looseCounter++;  
-                   console.log("Your Score " + winCounter);
-                   console.log("Computer Score " + looseCounter);
-                   console.log(" ");
-
-                } else {
-                    drawCounter++;  
-                   console.log("Draws: " + drawCounter);
-                    console.log(" ");
-                }
-                                    
-            } 
-            while (!(winCounter === 5 || looseCounter === 5));                                  
-           
-        }
+    <div id="loose">0</div>
+     <img class="players" id="robot" src="./img/robot.png"> 
+     <img class="players" id="cat" src="./img/cat.png"> 
+    </div>
 
 
-        function getMatchWinner(){
-            if (winCounter > looseCounter){
-                console.log("Congratulations! You win with a score of " + winCounter);
-            }
-            if (winCounter < looseCounter){
-                console.log("Too bad! You loose");
-            }
-
-
-        }
-
-
-        function getSeletions() {
-           
-            playerSelection = prompt("välj");
-           playerSelection = playerSelection.toLowerCase();
-            return (playerSelection, computerPlay());
-
-
-        }
-
-
-
-
-
-
-        function computerPlay() {
-            let random = Math.random();
-            if (random < (1 / 3)) {
-                return "rock";
-            } else if (random > (1 / 3) && random < (2 / 3)) {
-                return "paper";
-            } else if (random > (2 / 3)) {
-                return "scissors";
-            }
-        }
-
-
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection === "rock") {
-                playerRock(playerSelection, computerSelection);
-            }
-            if (playerSelection === "paper") {
-                playerPaper(playerSelection, computerSelection);
-            }
-            if (playerSelection === "scissors") {
-                playerScissors(playerSelection, computerSelection);
-            }
-
-            return result;
-
-
-        }
-
-
-        function playerRock(playerSelection, computerSelection) {
-            if (playerSelection === "rock" && computerSelection === "scissors") {
-                result = "win";
-                
-            }
-            if (playerSelection === "rock" && computerSelection === "paper") {
-                result = "loose";
-            }
-            if (playerSelection === "rock" && computerSelection === "rock") {
-                result = "draw";
-               
-            }
-            return result;
-
-        }
-
-
-        function playerPaper(playerSelection, computerSelection) {
-            if (playerSelection === "paper" && computerSelection === "rock") {
-                result = "win";
-            }
-            if (playerSelection === "paper" && computerSelection === "scissors") {
-                result = "loose";
-            }
-            if (playerSelection === "paper" && computerSelection === "paper") {
-                result = "draw";
-            }
-            return result;
-        }
-
-
-        function playerScissors(playerSelection, computerSelection) {
-            if (playerSelection === "scissors" && computerSelection === "paper") {
-                result = "win";
-            }
-            if (playerSelection === "scissors" && computerSelection === "rock") {
-                result = "loose";
-            }
-            if (playerSelection === "scissors" && computerSelection === "scissors") {
-                result = "draw";
-            }
-            return result;
-        }
-
-
-
-
-
-
-
-
-
-
+    <script src="script.js">
     </script>
 </body>
 
